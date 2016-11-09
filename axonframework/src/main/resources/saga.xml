@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:axon="http://www.axonframework.org/schema/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.axonframework.org/schema/core http://www.axonframework.org/schema/axon-core-2.0.xsd">
+
+    <axon:command-bus id="commandBus"/>
+    <axon:event-bus id="eventBus"/>
+
+    <axon:cluster id="async" >
+        <bean class="org.axonframework.eventhandling.async.AsynchronousCluster">
+            <constructor-arg name="identifier" value="async"/>
+            <constructor-arg name="executor" ref="executor"/>
+            <constructor-arg name="sequencingPolicy">
+                <bean class="org.axonframework.eventhandling.async.SequentialPerAggregatePolicy"/>
+            </constructor-arg>
+        </bean>
+        <axon:selectors>
+            <axon:class-name-matches pattern=".*OrderEventListener.*"/>
+        </axon:selectors>
+    </axon:cluster>
+
+    <axon:cluster id="simple" default="true"/>
+    <bean class="saga.AfterSpring"/>
+
+    <bean id="inMemorySagaRepository" class="org.axonframework.saga.repository.inmemory.InMemorySagaRepository"></bean>
+
+    <axon:saga-manager id="sagaManager" saga-repository="inMemorySagaRepository" event-bus="eventBus">
+
+        <!--<axon:async processor-count="10" executor="executor"/>-->
+        <axon:types>
+            saga.OrderManagementSaga
+        </axon:types>
+    </axon:saga-manager>
+
+    <bean id="executor"
+          class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="20"/>
+        <property name="maxPoolSize" value="100"/>
+        <property name="waitForTasksToCompleteOnShutdown" value="true"/>
+        <property name="threadNamePrefix" value="CyberShop-Executor-"/>
+    </bean>
+    <axon:annotation-config/>
+</beans>

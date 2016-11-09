@@ -1,0 +1,9 @@
+###从package看出,主要包含四部分
+####command
+定义命令
+####event
+定义事件
+####handler
+定义事件处理逻辑
+####model
+领域模型

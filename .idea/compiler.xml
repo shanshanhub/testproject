@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="axonframework" />
+        <module name="classloader" />
+        <module name="codeservice" />
+        <module name="coverage" />
+        <module name="cqrs" />
+        <module name="datetest" />
+        <module name="disruptor" />
+        <module name="dubbo" />
+        <module name="effectivejava" />
+        <module name="jianting" />
+        <module name="mongo" />
+        <module name="mongosaga" />
+        <module name="quartz" />
+        <module name="rongqishenruyanjiu" />
+        <module name="serialize" />
+        <module name="springtest" />
+        <module name="threadtest" />
+        <module name="tongguoyichangchulicuowu" />
+        <module name="zhiyouduixiang" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="axon" target="1.5" />
+      <module name="axonframework" target="1.5" />
+      <module name="classloader" target="1.5" />
+      <module name="codeservice" target="1.5" />
+      <module name="coverage" target="1.5" />
+      <module name="cqrs" target="1.5" />
+      <module name="datetest" target="1.5" />
+      <module name="disruptor" target="1.5" />
+      <module name="dubbo" target="1.5" />
+      <module name="effectivejava" target="1.5" />
+      <module name="jianting" target="1.5" />
+      <module name="mongo" target="1.5" />
+      <module name="mongosaga" target="1.5" />
+      <module name="quartz" target="1.5" />
+      <module name="rongqishenruyanjiu" target="1.5" />
+      <module name="serialize" target="1.5" />
+      <module name="springtest" target="1.5" />
+      <module name="test" target="1.5" />
+      <module name="threadtest" target="1.5" />
+      <module name="tongguoyichangchulicuowu" target="1.5" />
+      <module name="zhiyouduixiang" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/axonframework/axonframework.iml" filepath="$PROJECT_DIR$/axonframework/axonframework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/classloader/classloader.iml" filepath="$PROJECT_DIR$/classloader/classloader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codeservice/codeservice.iml" filepath="$PROJECT_DIR$/codeservice/codeservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coverage/coverage.iml" filepath="$PROJECT_DIR$/coverage/coverage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/datetest/datetest.iml" filepath="$PROJECT_DIR$/datetest/datetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/disruptor/disruptor.iml" filepath="$PROJECT_DIR$/disruptor/disruptor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo/dubbo.iml" filepath="$PROJECT_DIR$/dubbo/dubbo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/effectivejava/effectivejava.iml" filepath="$PROJECT_DIR$/effectivejava/effectivejava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jianting/jianting.iml" filepath="$PROJECT_DIR$/jianting/jianting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo.iml" filepath="$PROJECT_DIR$/mongo/mongo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongosaga/mongosaga.iml" filepath="$PROJECT_DIR$/mongosaga/mongosaga.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quartz/quartz.iml" filepath="$PROJECT_DIR$/quartz/quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rongqishenruyanjiu/rongqishenruyanjiu.iml" filepath="$PROJECT_DIR$/rongqishenruyanjiu/rongqishenruyanjiu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/serialize/serialize.iml" filepath="$PROJECT_DIR$/serialize/serialize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springtest/springtest.iml" filepath="$PROJECT_DIR$/springtest/springtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test.iml" filepath="$PROJECT_DIR$/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/threadtest/threadtest.iml" filepath="$PROJECT_DIR$/threadtest/threadtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tongguoyichangchulicuowu/tongguoyichangchulicuowu.iml" filepath="$PROJECT_DIR$/tongguoyichangchulicuowu/tongguoyichangchulicuowu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zhiyouduixiang/zhiyouduixiang.iml" filepath="$PROJECT_DIR$/zhiyouduixiang/zhiyouduixiang.iml" />
+    </modules>
+  </component>
+</project>

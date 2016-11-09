@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/data/mongo 
+        http://www.springframework.org/schema/data/mongo/spring-mongo-1.3.xsd
+		http://schema.cloudfoundry.org/spring
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="mongoSpringTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg ref="mongoDbFactory" />
+	</bean>
+
+	<bean id="mongoSagaTemplate"
+		class="saga.mongo.CFSagaMongoTemplate">
+		<constructor-arg ref="mongoDbFactory" />
+	</bean>
+
+	<beans profile="default">
+		<!-- <mongo:db-factory id="mongoDbFactory" dbname="${mongodb.name}"
+			host="${mongodb.host}" port="${mongodb.port}" />  -->
+		<mongo:mongo id="mongo" replica-set="127.0.0.1:27017">
+			<mongo:options 
+				slave-ok="true" 
+				connections-per-host="1000" 
+				threads-allowed-to-block-for-connection-multiplier="10"
+				connect-timeout="5000"
+				max-wait-time="-1"
+				auto-connect-retry="true"
+				socket-keep-alive="true"
+				socket-timeout="0"
+				write-number="1"
+				write-timeout="0"
+			 />
+		</mongo:mongo>
+	
+		<mongo:db-factory id="mongoDbFactory" dbname="axontrade_songshu_online"
+			mongo-ref="mongo" write-concern="REPLICAS_SAFE"/>
+	</beans>
+
+</beans>
