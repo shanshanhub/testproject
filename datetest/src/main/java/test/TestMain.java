@@ -12,8 +12,8 @@ import java.util.Date;
 public class TestMain {
     public static void main(String [] args){
 
-        Date time=new Date(1478170200000l);
-        System.out.println(time);
+//        Date time=new Date(1478170200000l);
+//        System.out.println(time);
 //
 //        Calendar calendar = Calendar.getInstance();
 //        calendar.setTime(time);
@@ -25,7 +25,7 @@ public class TestMain {
 //        Date beforeThreeMonth=convertStringToDate(LONGDATEFORMATER_YYYYMMDDHHMM,convertDateToString(LONGDATEFORMATER_YYYYMMDDHHMM,calendar.getTime()));
 //
 //        System.out.println(beforeThreeMonth);
-
+      System.out.println(convertDateToString("yyyy-MM-dd HH:mm:ss,SSS",convertStringToDate("dd/MMM/yyyy:HH:mm:ss Z","14/Dec/2016:23:16:32 +0800")));
     }
 
     /**
