@@ -23,6 +23,7 @@ public class Singletion {
 
     //第二种方法begin
     private static final Singletion INSTANCE=new Singletion();
+
     private Singletion(){
 
     }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+    <bean id="cacheManager"
+          class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation">
+            <value>classpath:ehcache.xml</value>
+        </property>
+    </bean>
+
+    <bean id="recommendCache1" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="cacheName" value="RecommendCache1"/>
+    </bean>
+
+    <!--<bean id="recommendCache2" class="org.springframework.cache.ehcache.EhCacheFactoryBean">-->
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
+        <!--<property name="cacheName" value="RecommendCache2"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="recommendCache3" class="org.springframework.cache.ehcache.EhCacheFactoryBean">-->
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
+        <!--<property name="cacheName" value="RecommendCache3"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="recommendCache4" class="org.springframework.cache.ehcache.EhCacheFactoryBean">-->
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
+        <!--<property name="cacheName" value="RecommendCache4"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="recommendCache5" class="org.springframework.cache.ehcache.EhCacheFactoryBean">-->
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
+        <!--<property name="cacheName" value="RecommendCache5"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="recommendCache6" class="org.springframework.cache.ehcache.EhCacheFactoryBean">-->
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
+        <!--<property name="cacheName" value="RecommendCache6"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="recommendCache7" class="org.springframework.cache.ehcache.EhCacheFactoryBean">-->
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
+        <!--<property name="cacheName" value="RecommendCache7"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="recommendCache8" class="org.springframework.cache.ehcache.EhCacheFactoryBean">-->
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
+        <!--<property name="cacheName" value="RecommendCache8"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="recommendCache9" class="org.springframework.cache.ehcache.EhCacheFactoryBean">-->
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
+        <!--<property name="cacheName" value="RecommendCache9"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="recommendCache10" class="org.springframework.cache.ehcache.EhCacheFactoryBean">-->
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
+        <!--<property name="cacheName" value="RecommendCache10"/>-->
+    <!--</bean>-->
+</beans>

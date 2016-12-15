@@ -28,6 +28,13 @@
         <module>mongosaga</module>
         <module>effectivejava</module>
         <module>dubbo</module>
+        <module>json</module>
+        <module>myehcache</module>
+        <module>ehcache</module>
+        <module>quyuqumo</module>
+        <module>memcache</module>
+        <module>spring-aop</module>
+        <module>fileoperator</module>
     </modules>
     <dependencies>
         <dependency>
