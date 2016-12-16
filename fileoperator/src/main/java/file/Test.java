@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import java.io.*;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -108,30 +109,33 @@ public class Test {
 
     }
 
+    static DateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss,SSS", Locale.ENGLISH);
 
     private static void writeMap(LogInfo logInfo, LogInfo getMap_logInfo) {
-        DateFormat f = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss Z", Locale.ENGLISH);
-        String logTime = f.format(new Date());
+
+
         JSONObject jitem = new JSONObject();
         jitem.put("uuid", logInfo.getUuid());
+        try {
+            if (logInfo.getType().equals("PUBLISH")) {
+                jitem.put("publishKeyName", logInfo.getKeyName());
+                jitem.put("subscribeKeyName", getMap_logInfo.getKeyName());
+                jitem.put("publishTime", logInfo.getProcesstime());
+                jitem.put("subscribeTime", getMap_logInfo.getProcesstime());
+                jitem.put("interval", f.parse(getMap_logInfo.getLogTime()).getTime() - f.parse(logInfo.getLogTime()).getTime());
+                jitem.put("logTime", getMap_logInfo.getLogTime());
+            } else {
+                jitem.put("publishKeyName", getMap_logInfo.getKeyName());
+                jitem.put("subscribeKeyName", logInfo.getKeyName());
+                jitem.put("publishTime", getMap_logInfo.getProcesstime());
+                jitem.put("subscribeTime", logInfo.getProcesstime());
+                jitem.put("interval", f.parse(logInfo.getLogTime()).getTime() - f.parse(getMap_logInfo.getLogTime()).getTime());
+                jitem.put("logTime", logInfo.getLogTime());
+            }
 
-        if (logInfo.getType().equals("PUBLISH")) {
-            jitem.put("publishKeyName", logInfo.getKeyName());
-            jitem.put("subscribeKeyName", getMap_logInfo.getKeyName());
-            jitem.put("publishTime", logInfo.getProcesstime());
-            jitem.put("subscribeTime", getMap_logInfo.getProcesstime());
-            jitem.put("interval", getMap_logInfo.getProcesstime() - logInfo.getProcesstime());
-            jitem.put("logTime", DataConvert.convertDateToString("yyyy-MM-dd HH:mm:ss,SSS", DataConvert.convertStringToDate("dd/MMM/yyyy:HH:mm:ss Z", logInfo.getLogTime())));
-        } else {
-            jitem.put("publishKeyName", getMap_logInfo.getKeyName());
-            jitem.put("subscribeKeyName", logInfo.getKeyName());
-            jitem.put("publishTime", getMap_logInfo.getProcesstime());
-            jitem.put("subscribeTime", logInfo.getProcesstime());
-            jitem.put("interval", logInfo.getProcesstime() - getMap_logInfo.getProcesstime());
-            jitem.put("logTime", DataConvert.convertDateToString("yyyy-MM-dd HH:mm:ss,SSS", DataConvert.convertStringToDate("dd/MMM/yyyy:HH:mm:ss Z", getMap_logInfo.getLogTime())));
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-
-
         filter_LogInfoMap.put(logInfo.getUuid(), jitem.toString() + System.getProperty("line.separator"));
 
     }
