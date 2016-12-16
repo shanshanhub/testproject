@@ -21,7 +21,7 @@ public class Test {
     private static Map<String, String> filter_LogInfoMap = new HashMap<String, String>();
 
     public static void main(String[] args) {
-        File file = new File("/Users/kangyali/Downloads");
+        File file = new File("/Users/kangyali/Downloads/Downloads");
         File[] array = file.listFiles();
         for (int i = 0; i < array.length; i++) {
             if (array[i].isFile()) {
@@ -29,9 +29,9 @@ public class Test {
                 readFileByLines(array[i].getPath());
             }
         }
-        // readFileByLines("/Users/kangyali/Downloads/mobile-redis-subscribe.log");
-        //readFileByLines("/Users/kangyali/Downloads/mobile-redis-publish.log");
-        //writeFile("/Users/kangyali/temp/redistemp.log");
+//         readFileByLines("/Users/kangyali/Downloads/mobile-redis-subscribe.log");
+//        readFileByLines("/Users/kangyali/Downloads/mobile-redis-publish.log");
+        writeFile("/Users/kangyali/temp/redistemp.log");
 
 
     }
@@ -114,19 +114,21 @@ public class Test {
         String logTime = f.format(new Date());
         JSONObject jitem = new JSONObject();
         jitem.put("uuid", logInfo.getUuid());
-        jitem.put("logTime", logTime);
+
         if (logInfo.getType().equals("PUBLISH")) {
             jitem.put("publishKeyName", logInfo.getKeyName());
             jitem.put("subscribeKeyName", getMap_logInfo.getKeyName());
             jitem.put("publishTime", logInfo.getProcesstime());
             jitem.put("subscribeTime", getMap_logInfo.getProcesstime());
             jitem.put("interval", getMap_logInfo.getProcesstime() - logInfo.getProcesstime());
+            jitem.put("logTime", DataConvert.convertDateToString("yyyy-MM-dd HH:mm:ss,SSS", DataConvert.convertStringToDate("dd/MMM/yyyy:HH:mm:ss Z", logInfo.getLogTime())));
         } else {
             jitem.put("publishKeyName", getMap_logInfo.getKeyName());
             jitem.put("subscribeKeyName", logInfo.getKeyName());
             jitem.put("publishTime", getMap_logInfo.getProcesstime());
             jitem.put("subscribeTime", logInfo.getProcesstime());
             jitem.put("interval", logInfo.getProcesstime() - getMap_logInfo.getProcesstime());
+            jitem.put("logTime", DataConvert.convertDateToString("yyyy-MM-dd HH:mm:ss,SSS", DataConvert.convertStringToDate("dd/MMM/yyyy:HH:mm:ss Z", getMap_logInfo.getLogTime())));
         }
 
 
