@@ -15,7 +15,7 @@ public class Parser implements Runnable{
     }
     public void run() {
         try {
-            Iterator<Page> iterator=new Page(10000,"enwiki.xml");
+//            Iterator<Page> iterator=new Page(10000l,"enwiki.xml");
         }catch (Exception e){
             e.printStackTrace();
         }

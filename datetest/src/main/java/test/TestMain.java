@@ -25,7 +25,7 @@ public class TestMain {
 //        Date beforeThreeMonth=convertStringToDate(LONGDATEFORMATER_YYYYMMDDHHMM,convertDateToString(LONGDATEFORMATER_YYYYMMDDHHMM,calendar.getTime()));
 //
 //        System.out.println(beforeThreeMonth);
-      System.out.println(convertDateToString("yyyy-MM-dd HH:mm:ss,SSS",convertStringToDate("dd/MMM/yyyy:HH:mm:ss Z","14/Dec/2016:23:16:32 +0800")));
+        System.out.println(convertDateToString("yyyy-MM-dd HH:mm:ss,SSS",convertStringToDate("dd/MMM/yyyy:HH:mm:ss Z","15/Dec/2016:03:35:17 +0800")));
     }
 
     /**
