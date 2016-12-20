@@ -38,12 +38,12 @@ public class CacheManager {
                 rwl.writeLock().lock();
                 System.out.println(Thread.currentThread().getName() + " be ready to write data!");
                 try {
-//                        value = this.cacheLevel2.get(key);
-//                        if (value != null) {
-//                            this.cacheLevel1.put(key, value);
-//                        }
-//                        value = "aaaa";//测试读写锁用
                     value = cacheDataFrom.putData();
+                    if (value != null) {
+                        this.cache.put(key, value);
+                    }
+//                        value = "aaaa";//测试读写锁用
+
                     System.out.println(Thread.currentThread().getName() + " have  write data: " + value);
                     rwl.readLock().lock();
                 } finally {
