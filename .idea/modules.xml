@@ -14,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/ehcache/ehcache.iml" filepath="$PROJECT_DIR$/ehcache/ehcache.iml" />
       <module fileurl="file://$PROJECT_DIR$/fileoperator/fileoperator.iml" filepath="$PROJECT_DIR$/fileoperator/fileoperator.iml" />
       <module fileurl="file://$PROJECT_DIR$/jianting/jianting.iml" filepath="$PROJECT_DIR$/jianting/jianting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jmeter3/jmeter3.iml" filepath="$PROJECT_DIR$/jmeter3/jmeter3.iml" />
       <module fileurl="file://$PROJECT_DIR$/json/json.iml" filepath="$PROJECT_DIR$/json/json.iml" />
       <module fileurl="file://$PROJECT_DIR$/memcache/memcache.iml" filepath="$PROJECT_DIR$/memcache/memcache.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo/mongo.iml" filepath="$PROJECT_DIR$/mongo/mongo.iml" />
@@ -21,6 +22,7 @@
       <module fileurl="file://$PROJECT_DIR$/myehcache/myehcache.iml" filepath="$PROJECT_DIR$/myehcache/myehcache.iml" />
       <module fileurl="file://$PROJECT_DIR$/quartz/quartz.iml" filepath="$PROJECT_DIR$/quartz/quartz.iml" />
       <module fileurl="file://$PROJECT_DIR$/quyuqumo/quyuqumo.iml" filepath="$PROJECT_DIR$/quyuqumo/quyuqumo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/rongqishenruyanjiu/rongqishenruyanjiu.iml" filepath="$PROJECT_DIR$/rongqishenruyanjiu/rongqishenruyanjiu.iml" />
       <module fileurl="file://$PROJECT_DIR$/serialize/serialize.iml" filepath="$PROJECT_DIR$/serialize/serialize.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-aop/spring-aop.iml" filepath="$PROJECT_DIR$/spring-aop/spring-aop.iml" />

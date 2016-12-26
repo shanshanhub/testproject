@@ -8,7 +8,7 @@
     <axon:command-bus id="commandBus"/>
     <axon:event-bus id="eventBus"/>
 
-    <axon:cluster id="async">
+    <axon:cluster id="async" >
         <bean class="org.axonframework.eventhandling.async.AsynchronousCluster">
             <constructor-arg name="identifier" value="async"/>
             <constructor-arg name="executor" ref="executor"/>
@@ -21,11 +21,7 @@
         </axon:selectors>
     </axon:cluster>
 
-    <axon:cluster id="simple" default="true">
-        <bean class="saga.SimpleClusterChild">
-            <constructor-arg name="name" value="commonSimple"/>
-        </bean>
-    </axon:cluster>
+    <axon:cluster id="simple" default="true"/>
     <bean class="saga.AfterSpring"/>
 
     <bean id="inMemorySagaRepository" class="org.axonframework.saga.repository.inmemory.InMemorySagaRepository"></bean>

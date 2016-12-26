@@ -36,6 +36,10 @@
         <module>spring-aop</module>
         <module>fileoperator</module>
         <module>cache</module>
+        <module>jmeter</module>
+        <module>jmeter</module>
+        <module>jmeter3</module>
+        <module>redis</module>
     </modules>
     <dependencies>
         <dependency>

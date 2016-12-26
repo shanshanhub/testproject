@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- order -->
+    <bean name="basicMemcachedClientBuilder" class="net.rubyeye.xmemcached.XMemcachedClientBuilder">
+        <!-- 缓存服务器地址和端口 -->
+        <constructor-arg>
+            <list>
+                <bean class="java.net.InetSocketAddress">
+                    <constructor-arg>
+                        <value>localhost</value>
+                    </constructor-arg>
+                    <constructor-arg>
+                        <value>11211</value>
+                    </constructor-arg>
+                </bean>
+            </list>
+        </constructor-arg>
+        <!-- 授权验证信息 -->
+        <!-- 连接数 -->
+        <property name="connectionPoolSize" value="5"></property>
+        <!-- 协议工厂，net.rubyeye.xmemcached.command.BinaryCommandFactory,TextCommandFactory(默认),KestrelCommandFactory -->
+        <property name="commandFactory">
+            <bean class="net.rubyeye.xmemcached.command.BinaryCommandFactory"></bean>
+        </property>
+        <!-- 分布策略，一致性哈希net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator或者ArraySessionLocator(默认) -->
+        <property name="sessionLocator">
+            <bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator"></bean>
+        </property>
+        <!-- 序列化转换器，默认使用net.rubyeye.xmemcached.transcoders.SerializingTranscoder，更多选项参见javadoc -->
+        <property name="transcoder">
+            <bean class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder" />
+        </property>
+        <!-- IoBuffer分配器，默认为net.rubyeye.xmemcached.buffer.SimpleBufferAllocator，可选CachedBufferAllocator(不推荐) -->
+        <property name="bufferAllocator">
+            <bean class="net.rubyeye.xmemcached.buffer.SimpleBufferAllocator"></bean>
+        </property>
+        <!-- 是否启用failure模式，true为启用，默认不启用 -->
+        <property name="failureMode" value="false"/>
+        <!-- 配置 -->
+        <property name="configuration">
+            <ref bean="configuration" />
+        </property>
+    </bean>
+    <!-- Use factory bean to build memcached client -->
+    <bean name="basicMemcachedClient" factory-bean="basicMemcachedClientBuilder"
+          factory-method="build" destroy-method="shutdown" />
+    <bean id="configuration"
+          class="com.google.code.yanf4j.config.Configuration">
+        <property name="sessionReadBufferSize" value="131072"/>
+        <property name="readThreadCount" value="0"/>
+        <property name="sessionIdleTimeout" value="5000"/>
+        <property name="writeThreadCount" value="0"/>
+        <!--Socket SO_TIMEOUT 单位：毫秒  -->
+        <property name="soTimeout" value="6000"/>
+    </bean>
+</beans>
