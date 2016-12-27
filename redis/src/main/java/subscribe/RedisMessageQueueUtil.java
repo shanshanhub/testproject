@@ -1,5 +1,6 @@
 package subscribe;
 
+import com.alibaba.fastjson.JSONObject;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 import redis.clients.jedis.exceptions.JedisConnectionException;
@@ -19,24 +20,24 @@ public class RedisMessageQueueUtil {
      * 订阅默认通道消息
      */
     public static void subscribe(JedisPubSub pubSub) {
-        subscribe(pubSub,DEFAULT_CHANNEL);
+        subscribe(pubSub, DEFAULT_CHANNEL);
     }
 
     /**
      * 根据指定通道订阅消息
      */
-    public static void subscribe(JedisPubSub pubSub,String channel) {
-        boolean isRetryConnect = false;		// 是否重试连接
-        do{
+    public static void subscribe(JedisPubSub pubSub, String channel) {
+        boolean isRetryConnect = false;        // 是否重试连接
+        do {
             try {
                 Jedis jedis = RedisProvider.getResource();
-                if(jedis.isConnected()){
-                    retryConnectTimes =0;
-                    isRetryConnect =false;
+                if (jedis.isConnected()) {
+                    retryConnectTimes = 0;
+                    isRetryConnect = false;
                 }
                 jedis.subscribe(pubSub, channel);
-            }catch (JedisConnectionException e){
-                retryConnectTimes ++ ;
+            } catch (JedisConnectionException e) {
+                retryConnectTimes++;
                 isRetryConnect = true;
                 System.out.println("Redis订阅尝试重新连接次数：" + retryConnectTimes);
                 try {
@@ -45,22 +46,24 @@ public class RedisMessageQueueUtil {
                     e1.printStackTrace();
                 }
             }
-        }while (isRetryConnect);
+        } while (isRetryConnect);
     }
 
     /**
      * 使用默认通道发布消息
+     *
      * @param message
      */
     public static void publish(String message) {
-        publish(message,DEFAULT_CHANNEL);
+        publish(message, DEFAULT_CHANNEL);
     }
 
     /**
      * 发布消息到指定通道
+     *
      * @param message
      */
-    public static void publish(String message,String channel) {
+    public static void publish(String message, String channel) {
         Jedis jedis = RedisProvider.getResource();
         jedis.publish(channel, message);
         // 归还连接
@@ -70,8 +73,9 @@ public class RedisMessageQueueUtil {
     public static void main(String args[]) {
 
         JSONObject message = new JSONObject();
-        message.put(LocalCacheUpdateConstants.PARAM_KEY, "/mobile/api/index/getComeIndex");
-        message.put(LocalCacheUpdateConstants.PARAM_ACTION, LocalCacheUpdateConstants.DELETE);
+        message.put("test","test");
+//        message.put(LocalCacheUpdateConstants.PARAM_KEY, "/mobile/api/index/getComeIndex");
+//        message.put(LocalCacheUpdateConstants.PARAM_ACTION, LocalCacheUpdateConstants.DELETE);
 
         publish(message.toJSONString());
 //		publish(message.toJSONString(), "default");

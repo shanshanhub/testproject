@@ -77,6 +77,15 @@ public class EhcacheTestNg extends AbstractTestNGSpringContextTests {
 //        map.put(9l, recommendCache9);
 //        map.put(10l, recommendCache10);
     }
+    @Test
+    public void testaddOne(){
+        Goods goods = new Goods(0, 1, "", 1, 1, 1, 1, new BigDecimal(0), new BigDecimal(0), new BigDecimal(0), 1, new Date(), 1, 1, true, new Date(), 1, new Date(), 1, 1);
+        long start = System.currentTimeMillis();
+        for (int i = 0; i <100000; i++) {
+            recommendCache1.put(new Element("goods#" + goods.getId(), goods, 0, 10));
+        }
+        System.out.println("; userAlltime=" + (System.currentTimeMillis() - start));
+    }
 
     //    @Test(invocationCount = 100, threadPoolSize = 100)
     @Test

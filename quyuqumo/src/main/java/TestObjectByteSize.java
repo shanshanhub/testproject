@@ -11,13 +11,15 @@ import java.util.List;
  */
 public class TestObjectByteSize {
     public static void main(String[] args) {
-        objectsize();
+//        objectsize();
 //        goods.
+
+        stringsize();
 
     }
 
     public static void stringsize() {
-        String object = "1";
+        String object = "wanchuanlaiwanchuanlaiwanchuanla";
         int bytelength = object.getBytes().length;
         System.out.println(bytelength);
     }
