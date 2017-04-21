@@ -1,36 +1,25 @@
 package subscribe;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
-import java.util.concurrent.Executors;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @author WanChuanLai
- * @create 12/24/16.
+ * @create 12/28/16.
  */
-public class TestMain {
-    private static final Log logger = LogFactory.getLog(TestMain.class);
-
-
+public class TestMain2 {
     public static void main(String[] args) {
-
 
         new Thread() {
             public void run() {
 
                 System.out.println("＃＃＃订阅消息开始");
                 // 订阅消息
-                RedisMessageQueueUtil.subscribe(new LocalCacheRemoveSub());
+                RedisMessageQueueUtil2.subscribe(new LocalCacheRemoveSub());
             }
         }.start();
 
@@ -50,8 +39,7 @@ public class TestMain {
                     stringList.addAll(LocalCacheRemoveSub.stringList);
 
 //                    System.out.println("size:" + stringList.size());
-
-                    writeFile("/Users/kangyali/temp/redis_100_1m_100w-100_100_1.log", stringList);
+                    writeFile("/Users/kangyali/temp/redis_1000_10kb_100w-10_100_1.log", stringList);
 
 
                 }
@@ -63,7 +51,6 @@ public class TestMain {
 
     public static File file = null;
     public static int count = 0;
-    public static int filecount = 0;
 
     public static void writeFile(String filename, Collection<String> stringList) {
 
@@ -100,6 +87,4 @@ public class TestMain {
         }
 
     }
-
-
 }

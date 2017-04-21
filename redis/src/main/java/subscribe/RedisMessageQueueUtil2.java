@@ -5,16 +5,13 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author WanChuanLai
  * @create 12/24/16.
  */
-public class RedisMessageQueueUtil {
+public class RedisMessageQueueUtil2 {
 
     // 默认通道
     public static String DEFAULT_CHANNEL = "default";
@@ -51,8 +48,8 @@ public class RedisMessageQueueUtil {
                     Thread.currentThread().sleep(2000 * retryConnectTimes);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-        }
-    }
+                }
+            }
         } while (isRetryConnect);
     }
 

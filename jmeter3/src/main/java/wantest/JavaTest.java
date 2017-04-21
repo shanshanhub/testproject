@@ -1,5 +1,6 @@
 package wantest;
 
+import com.alibaba.fastjson.JSONObject;
 import net.rubyeye.xmemcached.MemcachedClient;
 import net.rubyeye.xmemcached.exception.MemcachedException;
 
@@ -12,6 +13,7 @@ import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import redis.clients.jedis.Jedis;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -21,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author WanChuanLai
@@ -36,6 +39,7 @@ public class JavaTest extends AbstractJavaSamplerClient {
     static int count;
     static String operatorType;
     static int processCount;
+    static Jedis jedis;
 
     // main只是为调试用，最好先调试再打包
 //运行前请把jmeter_home/lib下的所有jar包加载到IDE工具环境变量
@@ -43,12 +47,12 @@ public class JavaTest extends AbstractJavaSamplerClient {
 
         Arguments args0 = new Arguments();
         args0.addArgument("fileSize", "0");
-        args0.addArgument("testType", "ehcache");
+        args0.addArgument("testType", "redis");
         args0.addArgument("count", "100");
 
-        args0.addArgument("operatorType", "get");
+        args0.addArgument("operatorType", "publish");
 
-        args0.addArgument("processCount", "1000");
+        args0.addArgument("processCount", "2");
 
         JavaTest test = new JavaTest();
         JavaSamplerContext context = new JavaSamplerContext(args0);
@@ -72,6 +76,7 @@ public class JavaTest extends AbstractJavaSamplerClient {
         results.setSuccessful(true);
         String key = random(count);
         Object value = getObject(fileSize);
+
         results.sampleStart(); //记录响应时间开始
         for (int i = 0; i < processCount; i++) {
             try {
@@ -88,6 +93,15 @@ public class JavaTest extends AbstractJavaSamplerClient {
                     } else if (operatorType.equals("set")) {
                         testEhcache(key, value);
                     }
+                } else if (testType.equals("redis")) {
+                    if (operatorType.equals("get")) {
+                        testGetEhcache(key);
+                    } else if (operatorType.equals("set")) {
+                        testSetRedis(key, value);
+                    } else if (operatorType.equals("publish")) {
+                        testpublishRedis(value);
+                    }
+
                 }
 
             } catch (Throwable e) {
@@ -238,9 +252,27 @@ public class JavaTest extends AbstractJavaSamplerClient {
 
     }
 
-    public static void testRedis() {
+    private static AtomicInteger key = new AtomicInteger(0);
+
+
+    public static void testpublishRedis(Object value) {
+
+        RedisMessageQueueUtil.publish("{\"publishTime\":" + System.currentTimeMillis() + ",\"keyName\":" + key.incrementAndGet() + ",\"value\":\"" + value + "\"}", "default");
+
 
     }
+
+    public static void testGetRedis(String key) {
+
+        jedis.get(key);
+
+    }
+
+    public static void testSetRedis(String key, Object value) {
+        jedis.set(key, value.toString());
+
+    }
+
 
     /**
      * 根据大小获取对象

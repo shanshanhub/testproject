@@ -3,14 +3,11 @@ package subscribe;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import redis.clients.jedis.JedisPubSub;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.logging.Logger;
 
 
 /**
@@ -19,7 +16,7 @@ import java.util.logging.Logger;
  * @author Zero
  */
 
-public class LocalCacheRemoveSub extends JedisPubSub {
+public class LocalCacheRemoveSub2 extends JedisPubSub {
     public static List<String> stringList = Collections.synchronizedList(new ArrayList<String>());
 
     private static int count = 0;
@@ -37,30 +34,30 @@ public class LocalCacheRemoveSub extends JedisPubSub {
         String logTime = f.format(new Date());
 //        System.out.println("接收到消息:" + message + "(" + (++count) + ")");
         // 获取消息对象
-        JSONObject data = null;
-        try {
-            data = (JSONObject) JSON.parse(message);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if (data != null) {
-            Long publishTime = data.getLong("publishTime");
-            Long interval = subscribeTime - publishTime;
-
-            JSONObject jitem = new JSONObject();
-            jitem.put("keyName", data.getString("keyName"));
-            jitem.put("interval", interval);
-            jitem.put("subscribeTime", subscribeTime);
-            jitem.put("publishTime", publishTime);
-            jitem.put("logTime", logTime);
-            String jsonstr = jitem.toJSONString();
-            if (jsonstr == null || jsonstr.length() <= 0) {
-                System.out.println("jsonstr is null");
-            }
-            stringList.add(jsonstr);
-            //logger.info(jitem.toJSONString());
-
-        }
+//        JSONObject data = null;
+//        try {
+//            data = (JSONObject) JSON.parse(message);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        if (data != null) {
+//            Long publishTime = data.getLong("publishTime");
+//            Long interval = subscribeTime - publishTime;
+//
+//            JSONObject jitem = new JSONObject();
+//            jitem.put("keyName", data.getString("keyName"));
+//            jitem.put("interval", interval);
+//            jitem.put("subscribeTime", subscribeTime);
+//            jitem.put("publishTime", publishTime);
+//            jitem.put("logTime", logTime);
+//            String jsonstr = jitem.toJSONString();
+//            if (jsonstr == null || jsonstr.length() <= 0) {
+//                System.out.println("jsonstr is null");
+//            }
+//            stringList.add(jsonstr);
+//            //logger.info(jitem.toJSONString());
+//
+//        }
     }
 
     /**

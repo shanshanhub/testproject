@@ -1,0 +1,130 @@
+<configuration scan="true">
+    <property resource="logback.properties"/>
+    <appender name="file-info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${cybershop.log.dir}/${cybershop.log.info.filename}.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${cybershop.log.dir}/${cybershop.log.info.filename}.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <MaxHistory>${cybershop.log.maxhistory}</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>${cybershop.log.maxfilesize}</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder charset="${cybershop.log.charset}">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %logger{60} %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="file-debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${cybershop.log.dir}/${cybershop.log.debug.filename}.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${cybershop.log.dir}/${cybershop.log.debug.filename}.%d{yyyy-MM-dd}-%i.log
+            </fileNamePattern>
+            <MaxHistory>${cybershop.log.maxhistory}</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>${cybershop.log.maxfilesize}</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder charset="${cybershop.log.charset}">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %logger{60} %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="file-warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${cybershop.log.dir}/${cybershop.log.warn.filename}.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${cybershop.log.dir}/${cybershop.log.warn.filename}.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <MaxHistory>${cybershop.log.maxhistory}</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>${cybershop.log.maxfilesize}</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder charset="${cybershop.log.charset}">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %logger{60} %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file-error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${cybershop.log.dir}/${cybershop.log.error.filename}.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${cybershop.log.dir}/${cybershop.log.error.filename}.%d{yyyy-MM-dd}-%i.log
+            </fileNamePattern>
+            <MaxHistory>${cybershop.log.maxhistory}</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>${cybershop.log.maxfilesize}</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder charset="${cybershop.log.charset}">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %logger{60} %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>${cybershop.log.level}</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <encoder charset="${cybershop.log.charset}">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %logger{60} %m%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="redissubscribe" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${cybershop.log.redissubscribe.dir}/${cybershop.log.redissubscribe.filename}.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${cybershop.log.redissubscribe.dir}/${cybershop.log.redissubscribe.filename}.%d{yyyy-MM-dd}-%i.log
+            </fileNamePattern>
+            <MaxHistory>${cybershop.log.maxhistory}</MaxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>${cybershop.log.maxfilesize}</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder charset="${cybershop.log.charset}">
+            <pattern>%m%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="subscribe.TestMain" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="redissubscribe"/>
+    </logger>
+
+    <root>
+        <level value="warn"/>
+        <appender-ref ref="file-info"/>
+        <appender-ref ref="file-debug"/>
+        <appender-ref ref="file-warn"/>
+        <appender-ref ref="file-error"/>
+        <appender-ref ref="console"/>
+    </root>
+</configuration>

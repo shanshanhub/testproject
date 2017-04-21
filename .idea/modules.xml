@@ -17,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/jmeter3/jmeter3.iml" filepath="$PROJECT_DIR$/jmeter3/jmeter3.iml" />
       <module fileurl="file://$PROJECT_DIR$/json/json.iml" filepath="$PROJECT_DIR$/json/json.iml" />
       <module fileurl="file://$PROJECT_DIR$/memcache/memcache.iml" filepath="$PROJECT_DIR$/memcache/memcache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/messagedispatch/messagedispatch.iml" filepath="$PROJECT_DIR$/messagedispatch/messagedispatch.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo/mongo.iml" filepath="$PROJECT_DIR$/mongo/mongo.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongosaga/mongosaga.iml" filepath="$PROJECT_DIR$/mongosaga/mongosaga.iml" />
       <module fileurl="file://$PROJECT_DIR$/myehcache/myehcache.iml" filepath="$PROJECT_DIR$/myehcache/myehcache.iml" />

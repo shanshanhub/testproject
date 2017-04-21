@@ -1,13 +1,10 @@
-package subscribe;
+package wantest;
 
 import com.alibaba.fastjson.JSONObject;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -17,11 +14,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class RedisMessageQueueUtil {
 
     // 默认通道
-    public static String DEFAULT_CHANNEL = "default";
+    public static String DEFAULT_CHANNEL = "defaultwan";
     // Redis服务停止，客户端重连次数
     private static int retryConnectTimes = 0;
-
-
 
     /**
      * 订阅默认通道消息
@@ -51,8 +46,8 @@ public class RedisMessageQueueUtil {
                     Thread.currentThread().sleep(2000 * retryConnectTimes);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-        }
-    }
+                }
+            }
         } while (isRetryConnect);
     }
 
