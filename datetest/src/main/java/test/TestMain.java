@@ -10,9 +10,10 @@ import java.util.Date;
  * @create 8/26/16.
  */
 public class TestMain {
-    public static void main(String [] args){
-
-//        Date time=new Date(1478170200000l);
+    public static void main(String[] args) {
+        long time = Long.parseLong("1523599790000");
+       System.out.println(convertDateToString(LONGDATEFORMATER,new Date(time)));
+        //        Date time=new Date(1478170200000l);
 //        System.out.println(time);
 //
 //        Calendar calendar = Calendar.getInstance();
@@ -25,16 +26,14 @@ public class TestMain {
 //        Date beforeThreeMonth=convertStringToDate(LONGDATEFORMATER_YYYYMMDDHHMM,convertDateToString(LONGDATEFORMATER_YYYYMMDDHHMM,calendar.getTime()));
 //
 //        System.out.println(beforeThreeMonth);
-        System.out.println(convertDateToString("yyyy-MM-dd HH:mm:ss,SSS",convertStringToDate("dd/MMM/yyyy:HH:mm:ss Z","15/Dec/2016:03:35:17 +0800")));
+        //  System.out.println(convertDateToString("yyyy-MM-dd HH:mm:ss,SSS",convertStringToDate("dd/MMM/yyyy:HH:mm:ss Z","15/Dec/2016:03:35:17 +0800")));
     }
 
     /**
      * 把时间字符串转成指定格式的时间
      *
-     * @param datePattern
-     *            转换格式
-     * @param date
-     *            时间
+     * @param datePattern 转换格式
+     * @param date        时间
      * @return 时间Date
      * @throws ParseException
      */
@@ -46,14 +45,16 @@ public class TestMain {
         try {
             date = df.parse(dateStr);
         } catch (ParseException pe) {
-           // log.info("{}",pe);
+            // log.info("{}",pe);
             return null;
         }
         return (date);
     }
+
     public final static String LONGDATEFORMATER = "yyyy-MM-dd HH:mm:ss";
 
     public final static String LONGDATEFORMATER_YYYYMMDDHHMM = "yyyy-MM-dd HH:mm";
+
     public static final Date convertStringToDate(String dateStr) {
         SimpleDateFormat df = null;
         Date date = null;
@@ -61,7 +62,7 @@ public class TestMain {
         try {
             date = df.parse(dateStr);
         } catch (ParseException pe) {
-           // log.info("{}",pe);
+            // log.info("{}",pe);
             return null;
         }
         return (date);
@@ -75,5 +76,6 @@ public class TestMain {
         }
         return (returnValue);
     }
+
 
 }
